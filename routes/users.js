@@ -31,7 +31,7 @@ router.post('/signup', (req, res) => {
           password: req.body.password
         })
         newUser.save().then(newDoc => {
-          res.json({ newUser: newDoc })
+          res.json({ newUser: newDoc.username })
         })
       }
     })
