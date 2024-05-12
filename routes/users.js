@@ -31,7 +31,7 @@ router.post('/signup', (req, res) => {
           password: req.body.password
         })
         newUser.save().then(newDoc => {
-          res.json({ newUser: newDoc.username })
+          res.json({ result: true, newUser: newDoc.username })
         })
       }
     })
@@ -45,7 +45,8 @@ router.post('/signin', (req, res) => {
   User.findOne({ username: req.body.username, password: req.body.password })
     .then(data => {
       if (data) {
-        res.json({ result: true })
+        res.json({ result: true, username: data.username  })
+        console.log(data)
       } else {
         res.json({ result: false, error: 'User doesn\'t exists' })
       }
